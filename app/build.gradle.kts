@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("kapt")
+    alias(libs.plugins.daggerHiltAndroid)
 }
 
 android {
@@ -74,8 +76,15 @@ dependencies {
     implementation("androidx.paging:paging-compose:3.2.0-rc01")
 
 
+    //Dagger Hilt
+    implementation(libs.dagger.hilt)
+    kapt(libs.dagger.hilt.compiler)
 
 
+    // Room
+    val roomVersion = "2.6.0"
+    implementation("androidx.room:room-ktx:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
 
 
 }
